@@ -1,0 +1,43 @@
+{include file="Public/header" /}
+
+<div class="layui-body">
+    <div class="layui-container" id="exAdminInfo">
+        <!-- 内容主体区域 -->
+        <h2 id="adminCon" style="text-align: center;">修改信息</h2>
+        <form class="layui-form" action="" method="post" >
+            <div class="layui-form-item">
+                    <input type="hidden" name="admin_id" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" value="{$adminData.admin_id}">
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="username" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" value="{$adminData.admin_name}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">权限等级</label>
+                <div class="layui-input-block">
+                    <select name="auth_level" lay-verify="required">
+                        <option value=""></option>
+                        {if condition="$adminData.admin_authority eq 1"}
+                        <option value="0" selected>超级管理员</option>
+                        <option value="1">普通管理员</option>
+                        {/if}
+                        {if condition="$adminData.admin_authority eq 2"}
+                        <option value="0">超级管理员</option>
+                        <option value="1" selected>普通管理员</option>
+                        {/if}
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="editAdmin">确认修改</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{include file="Public/footer" /}
+<script src="__ADMIN_JS__/edit.js"></script>

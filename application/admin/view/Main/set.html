@@ -1,0 +1,81 @@
+{include file="Public/header" /}
+<div style="width:930px;margin:50px auto;">
+    <h2 id="recycle_add">设置网站信息</h2>
+    <form class="layui-form " id="set_info_form" action="#" style="padding: 15px 20px 0 0;" method="post">
+        <div class="layui-form-item layui-hide">
+            <label class="layui-form-label">ID</label>
+            <div class="layui-input-block">
+                <input type="text" name="info_id" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label layui-form-label1">全国热线</label>
+            <div class="layui-input-block">
+                <input type="text" required id="phone" name="phone" value="{$infoPhone}" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label layui-form-label1">开始时间</label>
+            <div class="layui-input-block">
+                <select id="start_time" name="start_time" lay-filter="start_time">
+                    <option value=""></option>
+                    <option value="1" selected="">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label layui-form-label1">结束时间</label>
+            <div class="layui-input-block">
+                <select id="end_time" name="end_time" lay-filter="end_time">
+                    <option value=""></option>
+                    <option value="13" selected="">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="button" required id="confirm_info"   class="layui-btn layui-btn-normal">确认</button>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label layui-form-label1">工作时间</label>
+            <div class="layui-input-block">
+                <input type="text" required id="workTime" value="{$infoWorkTime}" name="workTime" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label layui-form-label1">邮箱</label>
+            <div class="layui-input-block">
+                <input type="text" name="email" required lay-verify="email" value="{$infoEmail}" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item" style="margin-top: 15px;">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="add-info">立即提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+{include file="Public/footer" /}

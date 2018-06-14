@@ -1,0 +1,59 @@
+{include file="Public/header" /}
+<div class="layui-body">
+    <div class="layui-container">
+        <!-- 内容主体区域 -->
+        <h2 id="userCon" style="text-align: center;">用户管理</h2>
+        <!--<div class="btn-wrap layui-clear">
+            <div class="layui-show-md-inline-block" style="float:right;">
+                <a href="javascript:" class="layui-btn" data-type="new">新建人员</a>
+            </div>
+        </div>-->
+        <table id="users" lay-filter="users"></table>
+        <script type="text/html" id="operation-bar">
+            {if condition="$Request.session.adminAuthority eq 1"}
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除用户</a>
+            {/if}
+            {if condition="$Request.session.adminAuthority eq 2"}
+            <a class="layui-btn layui-btn-danger layui-btn-xs layui-disabled" lay-event="del" disabled="">删除用户</a>
+            {/if}
+            <!--<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改信息</a>-->
+        </script>
+    </div>
+</div>
+{include file="Public/footer" /}
+<script type="text/html" id="add-user">
+    <div id="user-template">
+        <form class="layui-form " action="#" style="padding: 15px 20px 0 0;">
+            <div class="layui-form-item layui-hide">
+                <label class="layui-form-label">ID</label>
+                <div class="layui-input-block">
+                    <input type="text" name="id" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="username" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">密码</label>
+                <div class="layui-input-block">
+                    <input type="password" name="password" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">姓名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="name" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item" style="margin-top: 15px;">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="add-user">立即提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>
+<script src="__ADMIN_JS__/user.js"></script>

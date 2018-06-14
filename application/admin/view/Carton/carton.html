@@ -1,0 +1,22 @@
+{include file="Public/header" /}
+<div class="layui-body">
+    <div class="layui-container">
+        <!-- 内容主体区域 -->
+        <h2 id="cartonCon" style="text-align: center;">箱面管理</h2>
+        <div class="btn-wrap layui-clear">
+            <div class="layui-show-md-inline-block" style="float:right;">
+                <a href="javascript:" class="layui-btn" id="createCarton" >生产箱面</a>
+            </div>
+        </div>
+        <table id="carton" lay-filter="carton"></table>
+        <script type="text/html" id="switch-useful">
+            <input type="checkbox" name="carton_isUseful" value="{{d.carton_id}}" lay-skin="switch" lay-text="是|否" lay-filter="carton_isUseful" {{ d.carton_isUseful == true ? 'checked' : '' }}>
+        </script>
+        <script type="text/html" id="switch-using">
+            <input type="checkbox" name="carton_isUsing" value="{{d.carton_id}}" lay-skin="switch" lay-text="是|否" lay-filter="carton_isUsing" {{ d.carton_isUsing == true ? 'checked' : '' }}>
+        </script>
+    </div>
+</div>
+{include file="Public/footer" /}
+
+<script src="__ADMIN_JS__/carton.js"></script>

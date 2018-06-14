@@ -1,0 +1,86 @@
+{include file="Public/header" /}
+
+<section class="banner_area">
+    <div class="container">
+        <div class="pull-left">
+            <h3>联系我们</h3>
+        </div>
+        <div class="pull-right">
+            <a href="__INDEX__/Index/index">主页</a>
+            <a href="__INDEX__/Index/contactUs">联系我们</a>
+        </div>
+    </div>
+</section>
+
+<section class="contact_form_area2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h3 class="single_title">留言</h3>
+                <div class="row">
+                    <form class="contact_us_form" action="#" method="post" id="phpcontactform">
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="姓名">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="邮箱">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <input type="text" class="form-control" id="subject" name="subject" placeholder="主题">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <textarea class="form-control" id="message" name="message" placeholder="内容" rows="1"></textarea>
+                        </div>
+                        <div class="form-group col-md-12 button_area">
+                            <button type="button" value="submit your quote" class="btn submit_blue form-control" id="js-contact-btn">提交留言<i class="fa fa-angle-right"></i></button>
+                            <div id="js-contact-result" data-success-msg="发送成功，稍后联系您！" data-error-msg="发送失败！"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <h3 class="single_title">了解更多</h3>
+                <div class="contact_details_inner">
+                    <div class="media">
+                        <div class="media-left">
+                            <i class="fa fa-map-marker"></i>
+                        </div>
+                        <div class="media-body">
+                            <p>华北电力大学, 华电路 </p>
+                            <p>保定, BaoDing 071000</p>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="media-left">
+                            <i class="fa fa-envelope-o"></i>
+                        </div>
+                        <div class="media-body">
+                            <a href="#">174780897@qq.com</a>
+                            <a href="#">test@ncepu.cn</a>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="media-left">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="media-body">
+                            <a href="#">+ 1800 562 2487</a>
+                            <a href="#">+ 3215 546 8975</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{include file="Public/footer" /}
+{include file="Public/source" /}
+<script>
+    $("#js-contact-btn").click(function(){
+        layer.msg('已收到您的留言，我们会尽快与您联系！',{icon:1});
+    });
+</script>
+</body>
+
+</html>

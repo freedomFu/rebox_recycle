@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" href="__ADMIN_IMG__/fav-logo.png" type="image/x-icon" />
+    <title>绿色快递回收系统</title>
+    <link rel="stylesheet" href="__ADMIN_LAYUI__/css/layui.css">
+    <link rel="stylesheet" href="__ADMIN_CSS__/main/index.css">
+    <link rel="stylesheet" href="__ADMIN_CSS__/admin/admin.css">
+    <link rel="stylesheet" href="__ADMIN_CSS__/recycle/recycle.css">
+    <!--<script src="__ADMIN_JS__/assets/jquery-1.12.4.js"></script>-->
+
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo"><a href="__ADMIN__/Index/index"><img src="__ADMIN_IMG__/footLogo.png" width="180" /></a></div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="__ADMIN__/User/showUser">用户管理</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">产品管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="__ADMIN__/Carton/showCarton">箱面管理</a></dd>
+                    <dd><a href="__ADMIN__/Box/showBox">箱子管理</a></dd>
+                    <dd><a href="__ADMIN__/Recycle/index">回收站点管理</a></dd>
+                </dl>
+            </li>
+            {if condition="$Request.session.adminAuthority eq 1"}
+            <li class="layui-nav-item"><a href="__ADMIN__/Admin/adminList">管理员管理</a></li>
+            {/if}
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    管理员{$Request.session.adminAuthority}
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="__ADMIN__/Index/showSet">基本设置</a></dd>
+                    <dd><a href="javascript:" id="password-btn">修改密码</a></dd>
+                    <dd><a href="__ADMIN__/Login/logout">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>

@@ -1,0 +1,27 @@
+{include file="Public/header" /}
+<div class="layui-body">
+    <div class="layui-container">
+        <!-- 内容主体区域 -->
+        <h2 id="boxCon" style="text-align: center;">箱子管理</h2>
+        <div class="btn-wrap layui-clear">
+            <div class="layui-show-md-inline-block" style="float:right;">
+                <a href="__ADMIN__/Box/showCreate" class="layui-btn" id="createbox" >生产箱子</a>
+            </div>
+        </div>
+        <table id="box" lay-filter="box"></table>
+        <script type="text/html" id="switch-using">
+            <input type="checkbox" name="box_isUsing" value="{{d.box_id}}" lay-skin="switch" lay-text="是|否" lay-filter="box_isUsing" {{ d.box_isUsing == true ? 'checked' : '' }}>
+        </script>
+        <script type="text/html" id="operation-bar">
+            {if condition="$Request.session.adminAuthority eq 1"}
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">分解箱子</a>
+            {/if}
+            {if condition="$Request.session.adminAuthority eq 2"}
+            <a class="layui-btn layui-btn-danger layui-btn-xs layui-disabled" lay-event="del" disabled="">分解箱子</a>
+            {/if}
+        </script>
+    </div>
+</div>
+{include file="Public/footer" /}
+
+<script src="__ADMIN_JS__/box.js"></script>

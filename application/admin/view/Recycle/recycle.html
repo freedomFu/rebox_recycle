@@ -1,0 +1,26 @@
+{include file="Public/header" /}
+
+<div class="layui-container">
+    <!-- 内容主体区域 -->
+    <h2 id="recycleCon" style="text-align: center;">回收站点管理</h2>
+    <div class="btn-wrap layui-clear">
+        <div class="layui-show-md-inline-block" style="float:right;">
+            <a href="__ADMIN__/Recycle/showAdd" class="layui-btn">添加站点</a>
+        </div>
+    </div>
+    <table id="recycle" lay-filter="recycle"></table>
+    <script type="text/html" id="operation-bar">
+        {if condition="$Request.session.adminAuthority eq 1"}
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除站点</a>
+        {/if}
+        {if condition="$Request.session.adminAuthority eq 2"}
+        <a class="layui-btn layui-btn-danger layui-btn-xs layui-disabled" lay-event="del" disabled="">删除站点</a>
+        {/if}
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改信息</a>
+    </script>
+</div>
+{include file="Public/footer" /}
+<script src="__ADMIN_JS__/recycle.js"></script>
+
+
+

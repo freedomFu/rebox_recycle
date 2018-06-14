@@ -1,0 +1,71 @@
+{include file="Public/header" /}
+<div style="width:930px;margin:50px auto;">
+    <h2 id="recycle_add">新增站点信息</h2>
+    <form class="layui-form " id="add_recycle_form" action="#" style="padding: 15px 20px 0 0;">
+        <div class="layui-form-item layui-hide">
+            <label class="layui-form-label">ID</label>
+            <div class="layui-input-block">
+                <input type="text" name="recycle_id" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">选择地区</label>
+            <div class="layui-input-inline">
+                <select name="provid" id="provid" lay-filter="provid">
+                    <option value="">请选择省</option>
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <select name="cityid" id="cityid" lay-filter="cityid">
+                    <option value="">请选择市</option>
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <select name="areaid" id="areaid" lay-filter="areaid">
+                    <option value="">请选择县/区</option>
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <button type="button" class="layui-btn layui-btn-normal" id="confirm_ssx" title="点击确认信息">确认</button>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label layui-form-label1">站点位置</label>
+            <div class="layui-input-block">
+                <input type="text" required id="recycle_position" name="recycle_position" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label layui-form-label1">站点容量</label>
+            <div class="layui-input-block">
+                <input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" required name="recycle_capacity" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item" style="margin-top: 15px;">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="add-recycle">立即提交</button>
+                <button class="layui-btn layui-btn-danger"><a style="color: #fff;" href="__ADMIN__/Recycle/index">查看站点</a></button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+{include file="Public/footer" /}
+<script src="__ADMIN_JS__/assets/jquery-1.12.4.js"></script>
+<script src="__ADMIN_JS__/recycle.js"></script>
+<script type="text/javascript" src="__ADMIN_JS__/assets/data.js"></script>
+<script type="text/javascript" src="__ADMIN_JS__/assets/province.js"></script>
+<script type="text/javascript">
+    var defaults = {
+        s1: 'provid',
+        s2: 'cityid',
+        s3: 'areaid',
+        v1: null,
+        v2: null,
+        v3: null
+    };
+</script>
+</html>
+
+
+

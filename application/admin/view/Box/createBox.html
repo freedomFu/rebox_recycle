@@ -1,0 +1,17 @@
+{include file="Public/header" /}
+<link rel="stylesheet" href="__ADMIN_CSS__/box/createBox.css">
+<div class="layui-body">
+    <div class="layui-container">
+        <!-- 内容主体区域 -->
+        <h2 id="createBoxCon" style="text-align: center;">生产箱面</h2>
+        <div class="btn-wrap layui-clear">
+            <div class="layui-show-md-inline-block" style="float:right;">
+                <a href="javascript:" class="layui-btn" id="confirmCreate" >确认生产</a>
+            </div>
+        </div>
+        <table id="createBox" lay-filter="createBox"></table>
+    </div>
+</div>
+{include file="Public/footer" /}
+
+<script src="__ADMIN_JS__/createBox.js"></script>

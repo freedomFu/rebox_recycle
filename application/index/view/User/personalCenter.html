@@ -1,0 +1,72 @@
+{include file="Public/header" /}
+<div  id="personInfo">
+<div class="layui-fluid">
+<form class="layui-form"  action="" method="post">
+    <h3>个人信息</h3>
+    <div class="layui-form-item">
+        <label class="layui-form-label">姓名</label>
+        <div class="layui-input-block">
+            <input type="text" name="name" placeholder="请输入姓名" autocomplete="off" class="layui-input" value="{$userInfo['user_name']}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-block">
+            <input type="text" name="username" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" value="{$userInfo['user_username']}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">手机号</label>
+        <div class="layui-input-block">
+            <input type="text" name="tel" required  lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input" value="{$userInfo['user_phone']}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">信誉积分</label>
+        <div class="layui-input-block">
+            <input type="text" name="credit" required  lay-verify="required" autocomplete="off" class="layui-input layui-disabled" value="{$userInfo['user_credit']}" disabled="">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="exUserInfo">确认修改</button>
+            <button type="button" id="personExPass" class="layui-btn layui-btn-primary">修改密码</button>
+        </div>
+    </div>
+</form>
+</div>
+</div>
+
+
+{include file="Public/footer" /}
+<script type="text/html" id="exPassTp">
+    <div id="exPass">
+        <form class="layui-form " method="post" action="#" style="padding: 15px 20px 0 0;">
+            <div class="layui-form-item">
+                <label class="layui-form-label">旧密码:</label>
+                <div class="layui-input-block">
+                    <input type="password" required name="oldPass" placeholder="请输入旧密码" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">新密码:</label>
+                <div class="layui-input-block">
+                    <input type="password" required name="pw1" placeholder="请输入新密码" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">确认密码:</label>
+                <div class="layui-input-block">
+                    <input type="password" required name="pw2" placeholder="请再次输入密码" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item" style="margin-top: 15px;">
+                <div class="layui-input-block">
+                    <button id="layui-expass" class="layui-btn layui-btn-normal" lay-submit lay-filter="exPass">确认修改</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>
+{include file="Public/source" /}

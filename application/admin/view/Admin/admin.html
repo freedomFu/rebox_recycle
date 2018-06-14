@@ -1,0 +1,66 @@
+{include file="Public/header" /}
+<div class="layui-body">
+    <div class="layui-container">
+        <!-- 内容主体区域 -->
+        <h2 id="userCon" style="text-align: center;">管理员管理</h2>
+        <div class="btn-wrap layui-clear">
+            <div class="layui-show-md-inline-block" style="float:right;">
+                <a href="javascript:" class="layui-btn" data-type="new">新建管理员</a>
+            </div>
+        </div>
+        <table id="admin" lay-filter="admin"></table>
+        <script type="text/html" id="operation-bar">
+            {if condition="$Request.session.adminAuthority eq 1"}
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+            {/if}
+            {if condition="$Request.session.adminAuthority eq 2"}
+            <a class="layui-btn layui-btn-danger layui-btn-xs layui-disabled" lay-event="del" disabled="">删除</a>
+            {/if}
+            {if condition="$Request.session.adminAuthority eq 1"}
+            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+            {/if}
+        </script>
+    </div>
+</div>
+{include file="Public/footer" /}
+
+<script type="text/html" id="add-admin">
+    <div id="admin-template">
+        <form class="layui-form " action="#" style="padding: 15px 20px 0 0;" method="post">
+            <div class="layui-form-item layui-hide">
+                <label class="layui-form-label">ID</label>
+                <div class="layui-input-block">
+                    <input type="text" name="id" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">权限等级</label>
+                <div class="layui-input-block">
+                    <select name="auth_level" lay-verify="required">
+                        <option value=""></option>
+                        <option value="0">超级管理员</option>
+                        <option value="1">普通管理员</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="username" autocomplete="off" class="layui-input" placeholder="请输入用户名">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">密码</label>
+                <div class="layui-input-block">
+                    <input type="password" name="password" autocomplete="off" class="layui-input" placeholder="请输入密码">
+                </div>
+            </div>
+            <div class="layui-form-item" style="margin-top: 15px;">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="add-admin">立即提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>
+<script src="__ADMIN_JS__/admin.js"></script>

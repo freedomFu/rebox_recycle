@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="__INDEX_IMG__/fav-logo.png" type="image/x-icon" />
+    <title>绿色快递回收系统</title>
+    <link href="__INDEX_CSS__/font-awesome.min.css" rel="stylesheet">
+    <link href="__INDEX_CSS__/bootstrap.min.css" rel="stylesheet">
+    <link href="__INDEX_VENDOR__/revolution/css/settings.css" rel="stylesheet">
+    <link href="__INDEX_VENDOR__/revolution/css/layers.css" rel="stylesheet">
+    <link href="__INDEX_VENDOR__/revolution/css/navigation.css" rel="stylesheet">
+    <link href="__INDEX_VENDOR__/animate-css/animate.css" rel="stylesheet">
+    <link href="__INDEX_VENDOR__/owl-carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="__INDEX_VENDOR__/magnific-popup/magnific-popup.css" rel="stylesheet">
+    <link rel="stylesheet" href="__INDEX_JS__/css/layui.css">
+    <link href="__INDEX_CSS__/style.css" rel="stylesheet">
+    <link href="__INDEX_CSS__/mycss.css" rel="stylesheet">
+</head>
+
+<body>
+<header class="main_header_area">
+    <div class="header_top">
+        <div class="container">
+            <div class="pull-left"><a href="__INDEX__/Index/index"><img src="__INDEX_IMG__/logo2.png" alt=""></a></div>
+            <div class="pull-right">
+                <div class="header_c_text"> <h5>全国热线</h5><h4>{$infoPhone}</h4> </div>
+                <div class="header_c_text"> <h5>工作时间</h5><h4>每天 {$infoWorkTime}</h4> </div>
+                <div class="header_c_text"> <h5>企业邮箱</h5><h4>{$infoEmail}</h4> </div>
+                <div class="header_c_text" id="header_reload">
+                    {if condition="$Request.session.reboxUser eq 0"}
+                    <a class="quote_btn nav_btn" id="nav_login" href="#">登录</a>
+                    <a class="quote_btn nav_btn" id="nav_regis" href="#">注册</a>
+                    {else/}
+
+                    <span>你好，</span><span ><a href="__INDEX__/User/personalCenter" title="点击进入个人中心" style="color: #a00000;">{$Request.session.reboxName}</a></span>
+
+                    <button id="btn-logout" class="btn-normal "><a class="text-info" id="nav_logout" href="__INDEX__/User/logout">退出</a></button>
+                    {/if}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main_menu_area">
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="__INDEX__/Index/index">首页</a></li>
+                        <li><a href="__INDEX__/Index/aboutUs">关于我们</a></li>
+                        <li><a href="__INDEX__/Index/contactUs">联系我们</a></li>
+                        {if condition="$Request.session.reboxUser neq 0"}
+                        <li><a href="__INDEX__/User/showUseRecord">使用记录</a></li>
+                        {/if}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
