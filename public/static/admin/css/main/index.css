@@ -1,0 +1,15 @@
+.layui-body,.layui-layout-admin .layui-footer{
+    left: 0px;
+}
+
+h2#adminCon{
+    margin: 0;
+    padding: 0;
+    margin: 50px 0;
+}
+
+#set_info_form input,#set_info_form select,#set_info_form button,#set_info_form label{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    vertical-align: middle;
+}

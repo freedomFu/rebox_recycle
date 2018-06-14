@@ -1,0 +1,25 @@
+#recycleCon,#recycle_add{
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+#recycle_add{
+    margin-top: 100px;
+    margin-bottom: 80px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#add_recycle_form input,#add_recycle_form select,#add_recycle_form button,#add_recycle_form label{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    vertical-align: middle;
+}
+
+#add_recycle_form label{
+    font-size: 18px;
+}
+
+.layui-form-label1{
+    padding: 0px 15px;
+}
