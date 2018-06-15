@@ -101,7 +101,7 @@ class User extends Base
             case $isOnePhone:
                 falsePro(7,'该手机号已存在！');exit;
             case !isUser($name):
-                falsePro(4,'用户名可以由英文、数字以及下划线组成！');exit;
+                falsePro(4,'用户名可以由英文、数字以及下划线的3-16位组成！');exit;
             case $pw1!=$pw2:
                 falsePro(2,'两次密码输入不一致');exit;
             case !isPw($pw1) || !isPw($pw2):
@@ -196,7 +196,7 @@ class User extends Base
             case $isRecPhone&&$isOnePhone:
                 falsePro(7,'该手机号已存在！');exit;
             case !isUser($username):
-                falsePro(4,'用户名可以由英文、数字以及下划线组成！');exit;
+                falsePro(4,'用户名可以由英文、数字以及下划线的3-16位组成！');exit;
             case !isPhone($phone):
                 falsePro(6,'手机号格式不正确');exit;
             case !isName($name):

@@ -26,7 +26,7 @@ function isPw($password){
  */
 function isUser($name){
     $flag = false;
-    $match='/^[_a-zA-Z0-9]+$/';
+    $match='/^[_a-zA-Z0-9]{3,16}+$/';
     if(preg_match($match,$name)){
         $flag = true;
     }

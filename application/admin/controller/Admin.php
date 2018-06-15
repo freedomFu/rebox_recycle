@@ -76,7 +76,7 @@ class Admin extends Base
             case $isOne:
                 falsePro(5,'该名称已存在！');exit;
             case !isUser($name):
-                falsePro(4,'用户名可以由英文、数字以及下划线组成！');exit;
+                falsePro(4,'用户名可以由英文、数字以及下划线的3-16位组成！');exit;
             case !isPw($password):
                 falsePro(3,'密码必须由6-16位的数字字母组合而成！');exit;
             default:
@@ -167,7 +167,7 @@ class Admin extends Base
             case ($nameFlag):
                 falsePro(5,'此用户名已存在');exit;
             case !isUser($name):
-                falsePro(4,'用户名可以由英文、数字以及下划线组成！');exit;
+                falsePro(4,'用户名可以由英文、数字以及下划线的3-16位组成！');exit;
             default:
                 break;
         }
