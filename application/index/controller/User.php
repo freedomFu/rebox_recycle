@@ -9,6 +9,30 @@ use app\index\controller\Base;
  */
 class User extends Base
 {
+
+    /**
+     * @Author:      fyd
+     * @DateTime:    2018/6/15 9:00
+     * @Description: 传递变量
+     */
+    private function show(){
+        $phone=Db::name('info')
+            ->where('info_name','phone')
+            ->find();
+        $workTime=Db::name('info')
+            ->where('info_name','workTime')
+            ->find();
+        $email=Db::name('info')
+            ->where('info_name','email')
+            ->find();
+
+        $infoPhone=$phone['info_value'];
+        $infoWorkTime=$workTime['info_value'];
+        $infoEmail=$email['info_value'];
+        $this->assign("infoPhone",$infoPhone);
+        $this->assign("infoWorkTime",$infoWorkTime);
+        $this->assign("infoEmail",$infoEmail);
+    }
     /**
      * @Author:      fyd
      * @DateTime:    2018/6/8 22:20
@@ -118,6 +142,15 @@ class User extends Base
      * @Description: 显示用户个人中心
      */
     public function personalCenter(){
+        $this->show();
+        $data=Db::name('info')
+            ->select();
+        $infoPhone=$data[0]['info_value'];
+        $infoWorkTime=$data[1]['info_value'];
+        $infoEmail=$data[2]['info_value'];
+        $this->assign("infoPhone",$infoPhone);
+        $this->assign("infoWorkTime",$infoWorkTime);
+        $this->assign("infoEmail",$infoEmail);
         $id = session('reboxUser');
         $where['user_id']=$id;
         $where['user_isdelete']=0;
@@ -194,6 +227,7 @@ class User extends Base
      * @Description: 显示使用记录模块
      */
     public function showUseRecord(){
+        $this->show();
         $id=session('reboxUser');
         $table=Db::name('userecord');
         $field="useRecord_id,useRecord_boxId,useRecord_state,useRecord_time";
@@ -205,6 +239,26 @@ class User extends Base
             ->paginate(5);
         $this->assign("data",$data);
         return $this->fetch("Record/useRecord");
+    }
+
+    /**
+     * @Author:      fyd
+     * @DateTime:    2018/6/12 15:53
+     * @Description: 显示抽奖记录模块
+     */
+    public function showAwardRecord(){
+        $this->show();
+        $id=session('reboxUser');
+        $table=Db::name('awardrecord');
+        $field="awardRecord_id,awardRecord_curCredit,awardRecord_state,awardRecord_time";
+        $where['awardRecord_userId']=$id;
+        $where['awardRecord_isdelete']=0;
+        $data=$table
+            ->field($field)
+            ->where($where)
+            ->paginate(5);
+        $this->assign("data",$data);
+        return $this->fetch("Record/awardRecord");
     }
 
     /**

@@ -1,0 +1,186 @@
+{include file="Public/header" /}
+<section class="banner_area">
+    <div class="container">
+        <div class="pull-left">
+            <h3>使用记录</h3>
+        </div>
+        <div class="pull-right">
+            <a href="__INDEX__/Index/index">主页</a>
+            <a href="__INDEX__/User/showAwardRecord">抽奖记录</a>
+        </div>
+    </div>
+</section>
+
+<table class="table table-striped">
+    <caption style="text-align: center;position:relative;">
+        <h2><span style="color: blue;">{$Request.session.reboxName}</span>的抽奖记录</h2>
+        <a style="position: absolute;right: 0;bottom: 10px;" href="javascript:void(0);" id="goAward" class="layui-btn">去抽奖</a>
+    </caption>
+
+    <tr>
+        <th>抽奖记录号</th>
+        <th>抽奖时信誉积分</th>
+        <th>抽奖状态</th>
+        <th>抽奖时间</th>
+    </tr>
+    {volist name="data" id="vo"}
+    <tr>
+        <td>{$vo.awardRecord_id}</td>
+        <td>{$vo.awardRecord_curCredit}</td>
+        {if condition="$vo.awardRecord_state eq 0"}
+        <td>未中奖</td>
+        {else/}
+        <td>已中将</td>
+        {/if}
+        <td>{$vo.awardRecord_time}</td>
+    </tr>
+    {/volist}
+
+
+</table>
+<div>{$data->render()}</div>
+
+
+
+{include file="Public/footer" /}
+{include file="Public/source" /}
+<style>
+    .rotate_con {
+        margin: 50px auto;
+        width: 320px;
+        height: 320px;
+        border: 1px solid #FFFFFF;
+        border-radius: 50%;
+    }
+
+    .rotate_row {
+        display: flex;
+        display: -webkit-flex;
+        height: 33.3333333%;
+    }
+
+    .rotate_item {
+        flex: 0 0 33.3333333%;
+        -webkit-flex: 0 0 33.3333333%;
+        line-height: 106.666666px;
+        text-align: center;
+        background: yellow;
+        padding: 1px;
+        border: 1px solid #fff;
+        box-sizing: border-box;
+    }
+
+    .item_start {
+        position: relative;
+        background-color: #FF5E5E;
+        color: #FFFFFF;
+        font-weight: bold;
+        cursor: pointer
+    }
+
+    .item_start:active {
+        background: #ED745B;
+    }
+
+    .rotate {
+        position: absolute;
+        width: 5px;
+        height: 106px;
+        top: -53px;
+        left: 53px;
+        background: #fff;
+        transform: rotateZ(0deg);
+        transform-origin: left bottom;
+        -webkit-transform-origin: left bottom;
+        transition: all 1.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .item_active {
+        border-color: red;
+    }
+
+    #awardTp{
+        position: absolute;
+        top: 100px;
+        z-index: 10;
+        left: 600px;
+    }
+</style>
+
+<div class="rotate_con" style="display: none;" id="awardTp">
+    <div class="rotate_row">
+        <div class="rotate_item">
+            小米手机8
+        </div>
+        <div class="rotate_item">
+            谢谢参与
+        </div>
+        <div class="rotate_item">
+            谢谢参与
+        </div>
+    </div>
+    <div class="rotate_row">
+        <div class="rotate_item">
+            谢谢参与
+        </div>
+        <div class="rotate_item item_start" id="start">
+            开始
+            <div class="rotate" id="rotate_zhen">
+
+            </div>
+        </div>
+        <div class="rotate_item">
+            再接再厉
+        </div>
+    </div>
+    <div class="rotate_row">
+        <div class="rotate_item">
+            谢谢参与
+        </div>
+        <div class="rotate_item">
+            积分10分
+        </div>
+        <div class="rotate_item">
+            红包10元
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.use(['form','jquery','layer'],function() {
+        var $ = layui.$
+            , layer = layui.layer;
+        //获取对象
+        var getid = function (id) {
+            return document.getElementById(id);
+        };
+        //按照旋转顺序的数组
+        var context = [ "谢谢参与", "谢谢参与", "再接再厉", "红包10元", "积分10元", "谢谢参与", "谢谢参与","小米手机8"];
+        var deg = 45, //旋转的默认角度360/8
+            numdeg = 0, //记录上次旋转停止时候的角度
+            num = 0, //记录旋转后数组的位置
+            isRotated = false; //判断是否在进行中
+        window.onload = function () {
+            var zhen = getid("rotate_zhen");
+            getid("start").addEventListener('click', function () {
+                if (isRotated) return; //如果正在旋转退出程序
+                isRotated = true;
+                var index = Math.floor(Math.random() * 8); //得到0-7随机数
+                num = index + num; //得到本次位置
+                numdeg += index * deg + Math.floor(Math.random() * 3 + 1) * 360;
+                zhen.style.webkitTransform = zhen.style.transform = "rotateZ(" + numdeg + "deg)";
+                setTimeout(function () {
+                    if (num >= 8) { //如果数组位置大于7就重新开始
+                        num = num % 8;
+                    }
+                    layer.msg(context[num]);
+                    isRotated = false; //旋转改为false说明没有旋转
+                    setTimeout(function () {
+                        $("#awardTp").fadeOut();
+                    },2000);
+                    // return base_ajax(base_index+"")
+                }, 1700)
+            }, false)
+        }
+    });
+</script>

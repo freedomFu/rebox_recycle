@@ -55,5 +55,9 @@ layui.use(['form','jquery','layer'],function(){
         });
     });
 
+    $("#goAward").click(function(){
+        $("#awardTp").fadeIn();
+    });
+
 });
 
